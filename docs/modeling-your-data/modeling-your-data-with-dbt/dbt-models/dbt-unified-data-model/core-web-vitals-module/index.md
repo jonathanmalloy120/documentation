@@ -35,7 +35,7 @@ This custom module consists of a series of dbt models which produce the followin
 
 - `snowplow_web_vitals`: Incremental table used as a base for storing core web vital events (first event per page view).
 
-- `snowplow_unified_vital_measurements`: Drop and recompute table to use for visualizations that takes core web vital measurements at the user specified percentile point (defaulted to 75).
+- `snowplow_web_vital_measurements`: Drop and recompute table to use for visualizations that takes core web vital measurements at the user specified percentile point (defaulted to 75).
 
 
 ## Operation

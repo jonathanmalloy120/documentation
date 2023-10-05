@@ -25,7 +25,7 @@ To enable this optional module, the web package must be correctly configured. Pl
 
 In order to use this module you would need to:
 
-1. Track core web vitals using the web `Snowplow Web Vitals plugin`, which populates the column/table `unstruct_event_com_snowplowanalytics_snowplow_unified_vitals_1`
+1. Track core web vitals using the web `Snowplow Web Vitals plugin`, which populates the column/table `unstruct_event_com_snowplowanalytics_snowplow_web_vitals_1`
 2. Have the [yauaa enrichment](/docs/enriching-your-data/available-enrichments/yauaa-enrichment/index.md) enabled (for device type and device class), which populates `contexts_com_snowplowanalytics_snowplow_yauaa_context_1`
 3. (Ideally, but not necessarily) Have the [spiders and bots](/docs/enriching-your-data/available-enrichments/iab-enrichment/index.md) enrichment enabled, which populates `contexts_com_iab_snowplow_spiders_and_robots_1`
 
@@ -33,7 +33,7 @@ In order to use this module you would need to:
 
 This custom module consists of a series of dbt models which produce the following aggregated models from the raw web vitals events:
 
-- `snowplow_unified_vitals`: Incremental table used as a base for storing core web vital events (first event per page view).
+- `snowplow_web_vitals`: Incremental table used as a base for storing core web vital events (first event per page view).
 
 - `snowplow_unified_vital_measurements`: Drop and recompute table to use for visualizations that takes core web vital measurements at the user specified percentile point (defaulted to 75).
 

@@ -1,5 +1,5 @@
 ---
-title: "Web"
+title: "Unified"
 sidebar_position: 100
 hide_title: true
 ---
@@ -22,10 +22,10 @@ The Snowplow unified data model aggregates Snowplow's out of the box page view, 
 
 <p align="center">
 <ThemedImage
-alt='Web Package data flow'
+alt='Unified Package data flow'
 sources={{
-light: require('./images/web-process-light.drawio.png').default,
-dark: require('./images/web-process-dark.drawio.png').default
+light: require('./images/unified-process-light.drawio.png').default,
+dark: require('./images/unified-process-dark.drawio.png').default
 }}
 />
 </p>
@@ -53,10 +53,10 @@ For information about overriding our macros, see [here](/docs/modeling-your-data
 - `filter_bots(table_alias)`[source](https://github.com/snowplow/dbt-snowplow-unified/blob/main/macros/filter_bots.sql): used to define the filter to remove bot events from events processed by the package. Of the form `and <condition>`. Used throughout the package to filter out bots from all models.
 - `channel_group_query()`[source](https://github.com/snowplow/dbt-snowplow-unified/blob/main/macros/channel_group_query.sql): defines the channel a user arrived at using various fields, populates the `default_channel_group` field. Must be a valid sql `select` object e.g. a complete `case when` statement. Used in `sessions_this_run` table.
 - `engaged_session()`[source](https://github.com/snowplow/dbt-snowplow-unified/blob/main/macros/engaged_session.sql): defines if a session was engaged or not, populates the `is_engaged` field. Must return `true` or `false` and be a valid sql `select` object e.g. a complete `case when` statement. Used in `sessions_this_run` table.
-- `content_group_query()`[source](https://github.com/snowplow/dbt-snowplow-unified/blob/main/macros/channel_group_query.sql): defines the content groups by classifying the page urls for page views. Must be a valid sql `select` object e.g. a complete `case when` statement. Used in `page_views_this_run` table.
+- `content_group_query()`[source](https://github.com/snowplow/dbt-snowplow-unified/blob/main/macros/channel_group_query.sql): defines the content groups by classifying the page urls for page views. Must be a valid sql `select` object e.g. a complete `case when` statement. Used in `views_this_run` table.
 
 ## Engaged vs. Absolute Time
-At a page view- and session-level we provide two measures of time; **absolute**, how long a user had the page open, and **engaged**, how much of that time the user was on the page. Engaged time is often a large predictor of a customer conversion, such as a purchase or a sign-up, whatever that may be in your domain.
+At a view- and session-level we provide two measures of time; **absolute**, how long a user had the page open, and **engaged**, how much of that time the user was on the page. Engaged time is often a large predictor of a customer conversion, such as a purchase or a sign-up, whatever that may be in your domain.
 
 Calculating absolute time is simple, it's the difference between the `derived_tstamp` of the first and last (page view or page ping) events within that page view/session.
 
@@ -91,7 +91,7 @@ We take different approaches to adjust for these stray pings at the page view an
 ### Sessions
 As all our processing ensures full sessions are reprocessed, our sessions level table includes all stray page ping events, as well as all other view and ping events. We adjust the start time down based on your minimum visit length if the session starts with a page ping, and we include sessions that contain only (stray) pings. We also count page views based on the number of unique `page_view_ids` you have (from the `web_page` context) rather than using absolute `page_view` events to include these stray pings, and account for stray pings in the engaged time. Overall this is a more accurate view of a session and treats the stray pings as if they had a corresponding `page_view` event in the same session, even when they did not.
 
-The result of this is you may see misalignment between sessions and if you tried to recalculate them based directly off the page views table; this is because we discard stray pings during page view processing as discussed below, so the values (`page_views`, `engaged_time_in_s`, and `absolute_time_in_s`) in the sessions table may be higher, but are more accurate at a session level.
+The result of this is you may see misalignment between sessions and if you tried to recalculate them based directly off the page views table; this is because we discard stray pings during page view processing as discussed below, so the values (`views`, `engaged_time_in_s`, and `absolute_time_in_s`) in the sessions table may be higher, but are more accurate at a session level.
 
 <p align="center">
 <ThemedImage

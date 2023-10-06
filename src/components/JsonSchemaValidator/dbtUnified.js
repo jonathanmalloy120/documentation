@@ -29,37 +29,37 @@ export const dbtSnowplowUnifiedConfigSchema = {
     snowplow__atomic_schema: {
       type: 'string',
       title: 'Schema',
-      description: 'Schema (dataset) that contains your atomic events',
+      description: 'Schema (dataset) that contains your atomic events (snowplow__atomic_schema)',
     },
     snowplow__database: {
       type: 'string',
       title: 'Database',
-      description: 'Database that contains your atomic events',
+      description: 'Database that contains your atomic events (snowplow__database)',
     },
     snowplow__dev_target_name: {
       type: 'string',
       title: 'Dev Target',
       description:
-        'Target name of your development environment as defined in your `profiles.yml` file',
+        'Target name of your development environment as defined in your `profiles.yml` file (snowplow__dev_target_name)',
     },
     snowplow__events_table: {
       type: 'string',
       title: 'Events Table',
-      description: 'The name of the table that contains your atomic events',
+      description: 'The name of the table that contains your atomic events (snowplow__events_table)',
     },
     snowplow__heartbeat: {
       type: 'number',
       minimum: 0,
       title: 'Heartbeat',
       description:
-        'Page ping heartbeat time as defined in your tracker configuration',
+        'Page ping heartbeat time as defined in your tracker configuration (snowplow__heartbeat)',
     },
     snowplow__min_visit_length: {
       type: 'number',
       minimum: 0,
       title: 'Min Visit length',
       description:
-        'Minimum visit length as defined in your tracker configuration',
+        'Minimum visit length as defined in your tracker configuration (snowplow__min_visit_length)',
     },
     snowplow__sessions_table: {
       type: 'string',
@@ -76,7 +76,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
       minimum: 0,
       title: 'Backfill Limit',
       description:
-        'The maximum numbers of days of new data to be processed since the latest event processed',
+        'The maximum numbers of days of new data to be processed since the latest event processed (snowplow__backfill_limit_days)',
     },
     snowplow__conversion_events: {
       title: 'Conversion Definition',
@@ -87,7 +87,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
         type: 'object',
         required: ['name', 'condition'],
         title: '',
-        description: 'Conversion Event',
+        description: 'Conversion Event (snowplow__conversion_events)',
         properties: {
           name: {
             type: 'string',
@@ -122,7 +122,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
       minimum: 1,
       title: 'CWV Days To Measure',
       description:
-        'The number of days to use for web vital measurements (if enabled)',
+        'The number of days to use for web vital measurements (if enabled) (snowplow__cwv_days_to_measure)',
     },
     snowplow__cwv_percentile: {
       type: 'number',
@@ -141,36 +141,36 @@ export const dbtSnowplowUnifiedConfigSchema = {
     },
     snowplow__limit_page_views_to_session: {
       type: 'boolean',
-      title: 'Limit Page View to Session',
+      title: 'Limit Page View to Session (snowplow__limit_page_views_to_session)',
     },
     snowplow__list_event_counts: {
       type: 'boolean',
-      title: 'List Per-Event Counts',
+      title: 'List Per-Event Counts (snowplow__list_event_counts)',
     },
     snowplow__lookback_window_hours: {
       type: 'number',
       minimum: 0,
       title: 'Event Lookback Window',
       description:
-        'The number of hours to look before the latest event processed - to account for late arriving data, which comes out of order',
+        'The number of hours to look before the latest event processed - to account for late arriving data, which comes out of order (snowplow__lookback_window_hours)',
     },
     snowplow__max_session_days: {
       type: 'number',
       minimum: 0,
       title: 'Max Session Length',
       description:
-        'The maximum allowed session length in days. For a session exceeding this length, all events after this limit will stop being processed',
+        'The maximum allowed session length in days. For a session exceeding this length, all events after this limit will stop being processed (snowplow__max_session_days)',
     },
     snowplow__session_lookback_days: {
       type: 'number',
       minimum: 0,
       title: 'Session Lookback Window',
       description:
-        'Number of days to limit scan on `snowplow_unified_base_sessions_lifecycle_manifest` manifest',
+        'Number of days to limit scan on `snowplow_unified_base_sessions_lifecycle_manifest` manifest (snowplow__session_lookback_days)',
     },
     snowplow__session_stitching: {
       type: 'boolean',
-      title: 'Enable Session Stitching',
+      title: 'Enable Session Stitching (snowplow__session_stitching)',
     },
     snowplow__start_date: {
       type: 'string',

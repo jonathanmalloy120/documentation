@@ -149,11 +149,11 @@ Redshift and Postgres use a [shredded](/docs/pipeline-components-and-application
 ```mdx-code-block
 import DbtSchemas from "@site/docs/reusable/dbt-schemas/_index.md";
 import CodeBlock from '@theme/CodeBlock';
-import { SchemaSetter } from '@site/src/components/DbtSchemaSelector';
+import { SchemaSetterSeeds } from '@site/src/components/DbtSchemaSelector';
 
 <DbtSchemas/>
 
-export const printSchemaVariables = (manifestSchema, scratchSchema, derivedSchema) => {
+export const printSchemaVariables = (manifestSchema, scratchSchema, derivedSchema, seedSchema) => {
   return(
     <>
     <CodeBlock language="yaml">
@@ -184,7 +184,7 @@ export const printSchemaVariables = (manifestSchema, scratchSchema, derivedSchem
 }
 
 ```
-<SchemaSetter output={printSchemaVariables}/>
+<SchemaSetterSeeds output={printSchemaVariables}/>
 
 ```mdx-code-block
 import { dump } from 'js-yaml';

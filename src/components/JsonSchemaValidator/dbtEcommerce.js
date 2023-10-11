@@ -4,7 +4,7 @@ export const dbtSnowplowEcommerceConfigSchema = {
     snowplow__atomic_schema: {
       type: 'string',
       title: 'Schema',
-      description: 'Schema (dataset) that contains your atomic events (snowplow__atomic_schema)',
+      description: 'Schema (dataset) that contains your atomic events',
     },
     snowplow__categories_separator: {
       type: 'string',
@@ -16,13 +16,13 @@ export const dbtSnowplowEcommerceConfigSchema = {
     snowplow__database: {
       type: 'string',
       title: 'Database',
-      description: 'Database that contains your atomic events (snowplow__database)',
+      description: 'Database that contains your atomic events',
     },
     snowplow__dev_target_name: {
       type: 'string',
       title: 'Dev Target',
       description:
-        'Target name of your development environment as defined in your `profiles.yml` file (snowplow__dev_target_name)',
+        'Target name of your development environment as defined in your `profiles.yml` file',
     },
     snowplow__number_category_levels: {
       type: 'number',
@@ -46,7 +46,7 @@ export const dbtSnowplowEcommerceConfigSchema = {
       minimum: 0,
       title: 'Backfill Limit',
       description:
-        'The maximum numbers of days of new data to be processed since the latest event processed (snowplow__backfill_limit_days)',
+        'The maximum numbers of days of new data to be processed since the latest event processed',
     },
     snowplow__days_late_allowed: {
       type: 'number',
@@ -71,21 +71,21 @@ export const dbtSnowplowEcommerceConfigSchema = {
       minimum: 0,
       title: 'Event Lookback Window',
       description:
-        'The number of hours to look before the latest event processed - to account for late arriving data, which comes out of order (snowplow__lookback_window_hours)',
+        'The number of hours to look before the latest event processed - to account for late arriving data, which comes out of order',
     },
     snowplow__max_session_days: {
       type: 'number',
       minimum: 0,
       title: 'Max Session Length',
       description:
-        'The maximum allowed session length in days. For a session exceeding this length, all events after this limit will stop being processed (snowplow__max_session_days)',
+        'The maximum allowed session length in days. For a session exceeding this length, all events after this limit will stop being processed',
     },
     snowplow__session_lookback_days: {
       type: 'number',
       minimum: 0,
       title: 'Session Lookback Window',
       description:
-        'Number of days to limit scan on `snowplow_web_base_sessions_lifecycle_manifest` manifest (snowplow__session_lookback_days)',
+        'Number of days to limit scan on `snowplow_web_base_sessions_lifecycle_manifest` manifest',
     },
     snowplow__start_date: {
       type: 'string',

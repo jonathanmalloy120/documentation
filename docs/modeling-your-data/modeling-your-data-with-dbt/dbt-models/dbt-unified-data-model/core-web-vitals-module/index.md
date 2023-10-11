@@ -18,5 +18,5 @@ import { Accelerator } from "@site/src/components/AcceleratorAdmonitions";
 ```mdx-code-block
 import CoreWebVitals from "@site/docs/reusable/data-modeling/core-web-vitals/_index.md"
 
-<CoreWebVitals packageName="snowplow_unified" />
+<CoreWebVitals packageName="unified" />
 ```

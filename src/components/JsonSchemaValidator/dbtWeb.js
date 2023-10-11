@@ -52,14 +52,14 @@ export const dbtSnowplowWebConfigSchema = {
       minimum: 0,
       title: 'Heartbeat',
       description:
-        'Page ping heartbeat time as defined in your tracker configuration (snowplow__heartbeat)',
+        'Page ping heartbeat time as defined in your tracker configuration',
     },
     snowplow__min_visit_length: {
       type: 'number',
       minimum: 0,
       title: 'Min Visit length',
       description:
-        'Minimum visit length as defined in your tracker configuration (snowplow__min_visit_length)',
+        'Minimum visit length as defined in your tracker configuration',
     },
     snowplow__sessions_table: {
       type: 'string',
@@ -87,7 +87,7 @@ export const dbtSnowplowWebConfigSchema = {
         type: 'object',
         required: ['name', 'condition'],
         title: '',
-        description: 'Conversion Event (snowplow__conversion_events)',
+        description: 'Conversion Event',
         properties: {
           name: {
             type: 'string',
@@ -122,7 +122,7 @@ export const dbtSnowplowWebConfigSchema = {
       minimum: 1,
       title: 'CWV Days To Measure',
       description:
-        'The number of days to use for web vital measurements (if enabled) (snowplow__cwv_days_to_measure)',
+        'The number of days to use for web vital measurements (if enabled)',
     },
     snowplow__cwv_percentile: {
       type: 'number',
@@ -141,7 +141,7 @@ export const dbtSnowplowWebConfigSchema = {
     },
     snowplow__limit_page_views_to_session: {
       type: 'boolean',
-      title: 'Limit Page View to Session (snowplow__limit_page_views_to_session)',
+      title: 'Limit Page View to Session',
     },
     snowplow__list_event_counts: {
       type: 'boolean',

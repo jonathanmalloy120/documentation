@@ -225,7 +225,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
       type: 'boolean',
       title: 'Enable Geolocation Context',
     },
-    snowplow__enable_app_context: {
+    snowplow__enable_application_context: {
       type: 'boolean',
       title: 'Enable App Context',
     },
@@ -233,7 +233,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
       type: 'boolean',
       title: 'Enable Screen Context',
     },
-    snowplow__enable_app_error_event: {
+    snowplow__enable_app_errors_module: {
       type: 'boolean',
       title: 'Enable App Error Context',
     },

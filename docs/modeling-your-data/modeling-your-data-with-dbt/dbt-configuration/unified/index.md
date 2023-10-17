@@ -1,6 +1,6 @@
 ---
-title: "Web"
-sidebar_position: 100
+title: "Unified"
+sidebar_position: 50
 ---
 
 ```mdx-code-block
@@ -78,7 +78,7 @@ All variables in Snowplow packages start with `snowplow__` but we have removed t
 | `enable_browser_context`            | Flag to include browser context data in the models.                                                                                                                                                                                                                                            | `false`                   |
 | `enable_mobile_context`            | Flag to include mobile context data in the models.                                                                                                                                                                                                                                            | `false`                   |
 | `enable_geolocation_context`            | Flag to include the geolocation data in the models.                                                                                                                                                                                                                                            | `false`                   |
-| `enable_app_context`            | Flag to include the app context data in the models.                                                                                                                                                                                                                                            | `false`                   |
+| `enable_application_context`            | Flag to include the app context data in the models.                                                                                                                                                                                                                                            | `false`                   |
 | `enable_screen_context`            | Flag to include the mobile screen data in the models.                                                                                                                                                                                                                                            | `false`                   |
 | `enable_app_error_event`            | Flag to include the mobile app error data in the models.                                                                                                                                                                                                                                            | `false`                   |
 | `enable_deep_link_context`            | Flag to include the deep link context data in the models.                                                                                                                                                                                                                                            | `false`                   |
@@ -246,7 +246,7 @@ export const GROUPS = [
                                           "snowplow__yauaa_context",
                                           "snowplow__consent_cmp_visible",
                                           "snowplow__consent_preferences",
-                                          "snowplow__browser_context","snowplow__session_context","snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__app_errors_table","snowplow__screen_view_events","snowplow__deep_link_context",
+                                          "snowplow__browser_context","snowplow__session_context","snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__app_errors_context","snowplow__screen_view_events","snowplow__deep_link_context",
                                           "snowplow__enable_load_tstamp",
                                           "snowplow__derived_tstamp_partitioned"] }
 ];

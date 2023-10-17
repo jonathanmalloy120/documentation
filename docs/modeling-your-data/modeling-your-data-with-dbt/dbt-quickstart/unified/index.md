@@ -70,7 +70,7 @@ Please note that your `target.database` is NULL if using Databricks. In Databric
 
 ### 4. Enabled desired contexts
 
-The unified package has the option to join in data from the following Snowplow enrichments and out-of-the-box contexts:
+The unified package has the option to join in data from the following Snowplow enrichments and out-of-the-box context entities:
 
 - [IAB enrichment](/docs/enriching-your-data/available-enrichments/iab-enrichment/index.md)
 - [UA Parser enrichment](/docs/enriching-your-data/available-enrichments/ua-parser-enrichment/index.md)
@@ -80,8 +80,10 @@ The unified package has the option to join in data from the following Snowplow e
 - Geolocation context
 - App context
 - Screen context
-- App Error event
 - Deep Link context
+- App Error context
+- Core Web Vitals
+- Consent (Preferences & cmp visible)
 
 By default these are **all disabled** in the unified package. Assuming you have the enrichments turned on in your Snowplow pipeline, to enable the contexts within the package please add the following to your `dbt_project.yml` file:
 
@@ -94,10 +96,12 @@ vars:
     snowplow__enable_browser_context: false
     snowplow__enable_mobile_context: false
     snowplow__enable_geolocation_context: false
-    snowplow__enable_app_context: false
+    snowplow__enable_application_context: false
     snowplow__enable_screen_context: false
-    snowplow__enable_app_error_event: false
     snowplow__enable_deep_link_context: false
+    snowplow__enable_consent: false
+    snowplow__enable_cwv: false
+    snowplow__enable_app_errors_module: false
 ```
 
 ### 5. Filter your data set

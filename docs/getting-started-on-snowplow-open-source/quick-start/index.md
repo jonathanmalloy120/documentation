@@ -108,7 +108,9 @@ We recommend to only load data into a single destination, but nothing prevents y
   </TabItem>
   <TabItem value="gcp" label="GCP">
 
-There are two alternative storage options for you to select: Postgres and BigQuery (currently, you can’t choose both).
+There are two alternative storage options for you to select: Postgres and BigQuery.
+
+We recommend to only load data into a single destination, but nothing prevents you from loading into multiple destinations with the same pipeline (e.g. for testing purposes).
 
   </TabItem>
   <TabItem value="azure" label="Azure 🧪">
@@ -509,6 +511,24 @@ If you [used our `base` module](#set-up-a-vpc-to-deploy-into), you will need to 
 * `subnet_id_lb`: use the identifier of the `collector-agw1` subnet from `base`
 * `subnet_id_servers`: use the identifier of the `pipeline1` subnet from `base`
 
+<details>
+<summary>Confluent Cloud</summary>
+
+If you already use Confluent Cloud, you can opt to create the necessary message topics there, instead of relying on Azure Event Hubs. This way, you will also benefit from features like [Stream Lineage](https://docs.confluent.io/cloud/current/stream-governance/stream-lineage.html).
+
+To do this, you will need to:
+* Set the `stream_type` variable to `confluent_cloud`
+* Create 3 or 4 topics manually in your Confluent cluster and add their names in the respective variables (`confluent_cloud_..._topic_name`)
+* Create an API key and fill the relevant fields (`confluent_cloud_api_key`, `confluent_cloud_api_secret`)
+* Add a bootstrap server in `confluent_cloud_bootstrap_server`
+
+:::tip Topic partitions
+
+If you need to stay within the free tier for your Confluent cluster, make sure to select no more than 2 partitions for each topic.
+
+:::
+
+</details>
 
   </TabItem>
 </Tabs>
@@ -546,7 +566,7 @@ If you are using Postgres, set the `postgres_db_ip_allowlist` to a list of CIDR 
   </TabItem>
   <TabItem value="gcp" label="GCP">
 
-As mentioned [above](#storage-options), there are two options for pipeline’s destination database. Pick your destination, set the `<destination>_db_enabled` variable (e.g. `postgres_db_enabled`) to `true` and fill the respective `<destination>.terraform.tfvars` file. Only database-specific variables are different in the two `.tfvars` files.
+As mentioned [above](#storage-options), there are two options for pipeline’s destination database. For each destination you’d like to configure, set the `<destination>_enabled` variable (e.g. `postgres_db_enabled`) to `true` and fill all the relevant configuration options (starting with `<destination>_`).
 
 :::caution Postgres only
 
@@ -592,11 +612,11 @@ This will output your `collector_dns_name`, `postgres_db_address`, `postgres_db_
 
 ```bash
 terraform init
-terraform plan -var-file=<destination>.terraform.tfvars
-terraform apply -var-file=<destination>.terraform.tfvars
+terraform plan
+terraform apply
 ```
 
-This will output your `collector_dns_name`, `db_address`, `db_port`, `bigquery_db_dataset_id`, `bq_loader_dead_letter_bucket_name` and `bq_loader_bad_rows_topic_name`.
+This will output your `collector_ip_address`, `postgres_db_address`, `postgres_db_port`, `bigquery_db_dataset_id`, `bq_loader_dead_letter_bucket_name` and `bq_loader_bad_rows_topic_name`.
 
   </TabItem>
   <TabItem value="azure" label="Azure 🧪">

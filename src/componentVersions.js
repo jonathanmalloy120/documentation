@@ -1,12 +1,12 @@
 export const versions = {
   // Trackers
-  androidTracker: '5.5.0',
+  androidTracker: '5.6.0',
   dotNetTracker: '1.2.1',
   cppTracker: '2.0.0',
   flutterTracker: '0.4.0',
   golangTracker: '3.0.0',
   googleAmpTracker: '1.1.0',
-  iosTracker: '5.5.0',
+  iosTracker: '5.6.0',
   javaTracker: '1.0.0',
   javaScriptTracker: '3.14.0',
   luaTracker: '0.2.0',
@@ -29,11 +29,11 @@ export const versions = {
   snowbridge: '2.2.0',
 
   // Loaders
-  bqLoader: '1.6.4',
-  esLoader: '2.0.9',
+  bqLoader: '1.6.8',
+  esLoader: '2.1.2',
   gcsLoader: '0.5.4',
   postgresLoader: '0.3.3',
-  rdbLoader: '5.7.3',
+  rdbLoader: '5.7.4',
   s3Loader: '2.2.7',
   s3Loader22x: '2.2.7',
   lakeLoader: '0.1.3',

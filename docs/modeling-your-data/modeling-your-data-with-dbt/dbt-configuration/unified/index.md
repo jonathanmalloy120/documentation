@@ -244,9 +244,9 @@ export const GROUPS = [
                                           "snowplow__iab_context",
                                           "snowplow__ua_parser_context",
                                           "snowplow__yauaa_context",
-                                          "snowplow__consent_cmp_visible",
-                                          "snowplow__consent_preferences",
-                                          "snowplow__browser_context","snowplow__session_context","snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__app_errors_context","snowplow__screen_view_events","snowplow__deep_link_context",
+                                          "snowplow__cmp_visible_events",
+                                          "snowplow__consent_preferences_events",
+                                          "snowplow__browser_context","snowplow__session_context","snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__application_error_events","snowplow__screen_view_events","snowplow__deep_link_context",
                                           "snowplow__enable_load_tstamp",
                                           "snowplow__derived_tstamp_partitioned"] }
 ];

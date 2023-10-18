@@ -101,7 +101,7 @@ vars:
     snowplow__enable_deep_link_context: false
     snowplow__enable_consent: false
     snowplow__enable_cwv: false
-    snowplow__enable_app_errors_module: false
+    snowplow__enable_app_errors: false
 ```
 
 ### 5. Filter your data set

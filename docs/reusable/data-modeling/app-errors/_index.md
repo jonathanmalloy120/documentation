@@ -10,6 +10,6 @@ Assuming your tracker is capturing `application_error` events, the module can be
 <CodeBlock language='yaml' title="dbt_project.yml">{`
 vars:
   snowplow_${props.packageName}:
-    snowplow__enable_app_errors_module: true
+    ${props.variable}: true
     `}
 </CodeBlock>

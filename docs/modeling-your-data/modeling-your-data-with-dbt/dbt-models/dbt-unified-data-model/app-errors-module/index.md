@@ -12,5 +12,5 @@ import Badges from '@site/src/components/Badges';
 ```mdx-code-block
 import Apperrors from "@site/docs/reusable/data-modeling/app-errors/_index.md"
 
-<Apperrors packageName="unified" />
+<Apperrors packageName="unified" variable="snowplow__enable_app_errors" />
 ```

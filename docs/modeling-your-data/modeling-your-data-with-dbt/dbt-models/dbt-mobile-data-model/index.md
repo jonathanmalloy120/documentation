@@ -56,5 +56,5 @@ Currently the App Errors module, used for crash reporting, is the only optional 
 ```mdx-code-block
 import Apperrors from "@site/docs/reusable/data-modeling/app-errors/_index.md"
 
-<Apperrors packageName="mobile" />
+<Apperrors packageName="mobile" variable="snowplow__enable_app_errors_module"/>
 ```

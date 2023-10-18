@@ -233,7 +233,7 @@ export const dbtSnowplowUnifiedConfigSchema = {
       type: 'boolean',
       title: 'Enable Screen Context',
     },
-    snowplow__enable_app_errors_module: {
+    snowplow__enable_app_errors: {
       type: 'boolean',
       title: 'Enable App Error Context',
     },
@@ -274,11 +274,11 @@ export const dbtSnowplowUnifiedConfigSchema = {
       type: 'string',
       title: '(Redshift) YAUAA Context Table',
     },
-    snowplow__consent_cmp_visible: {
+    snowplow__cmp_visible_events: {
       type: 'string',
       title: '(Redshift) CMP Visible Context Table',
     },
-    snowplow__consent_preferences: {
+    snowplow__consent_preferences_events: {
       type: 'string',
       title: '(Redshift) Consent Preferences Context Table',
     },

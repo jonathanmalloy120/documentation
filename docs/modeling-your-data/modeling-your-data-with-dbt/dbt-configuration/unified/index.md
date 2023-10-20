@@ -8,15 +8,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-:::info
-
-Some variables are only available in the latest version of our package, or might have changed format from older versions. If you are unable to use the latest version, check the `dbt_project.yml` file of our package for the version you are using to see what options are available to you.
-
-:::
-
 ## Package Configuration Variables
 
-This package utilizes a set of variables that are configured to recommended values for optimal performance of the models. Depending on your use case, you might want to override these values by adding to your `dbt_project.yml` file.
+This package utilizes a set of variables that are configured to recommended values for optimal performance of the models. Depending on your use case, you might want to override these values by adding to your `dbt_project.yml` file. We have provided a [tool](#config-generator) below to help you with that.
 
 :::note
 
@@ -111,7 +105,7 @@ Redshift and Postgres use a [shredded](/docs/pipeline-components-and-application
 | `ua_parser_context`   | `com_snowplowanalytics_snowplow_ua_parser_context_1`   |
 | `yauaa_context`       | `nl_basjes_yauaa_context_1`                            |
 | `consent_cmp_visible` | `com_snowplowanalytics_snowplow_cmp_visible_1`         |
-| `consent_preferences` | `com_snowplowanalytics_snowplow_consent_preferences_1` |
+| `consent_preferences_events` | `com_snowplowanalytics_snowplow_consent_preferences_1` |
 | `consent_cmp_visible` |`com_snowplowanalytics_snowplow_cmp_visible_1`          |
 | `browser_context`     | `com_snowplowanalytics_snowplow_browser_context_1`     |
 | `session_context`     | `com_snowplowanalytics_snowplow_client_session_1`      |
@@ -119,9 +113,10 @@ Redshift and Postgres use a [shredded](/docs/pipeline-components-and-application
 | `geolocation_context` | `com_snowplowanalytics_snowplow_geolocation_context_1` |
 | `application_context` | `com_snowplowanalytics_mobile_application_1`           |
 | `screen_context`      | `com_snowplowanalytics_mobile_screen_1`                |
-| `app_errors_table`    | `com_snowplowanalytics_snowplow_application_error_1`   |
+| `snowplow__application_error_events`    | `com_snowplowanalytics_snowplow_application_error_1`   |
 | `screen_view_events`  | `com_snowplowanalytics_mobile_screen_view_1`           |
-| `deep_link_context`   | `contexts_com_snowplowanalytics_mobile_deep_link_1`    |
+| `deep_link_context`   | `com_snowplowanalytics_mobile_deep_link_1`    |
+| `cwv_events`          |  `com_snowplowanalytics_snowplow_web_vitals_1` |
 
 | Variable Name        | Description                                                                                                                                                                                                                                                                                                                                                                                                          | Default |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -177,7 +172,10 @@ export const printSchemaVariables = (manifestSchema, scratchSchema, derivedSchem
     page_views:
       +schema: ${derivedSchema}
       scratch:
-        +schema: ${scratchSchema}`}
+        +schema: ${scratchSchema}
+seeds:
+  snowplow_unified:
+    +schema: ${seedSchema}`}
         </CodeBlock>
     </>
   )
@@ -246,8 +244,11 @@ export const GROUPS = [
                                           "snowplow__yauaa_context",
                                           "snowplow__cmp_visible_events",
                                           "snowplow__consent_preferences_events",
-                                          "snowplow__browser_context","snowplow__session_context","snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__application_error_events","snowplow__screen_view_events","snowplow__deep_link_context",
+                                          "snowplow__browser_context",
+                                          "snowplow__session_context",
+                                          "snowplow__mobile_context","snowplow__geolocation_context","snowplow__application_context","snowplow__screen_context","snowplow__application_error_events","snowplow__screen_view_events","snowplow__deep_link_context",
                                           "snowplow__enable_load_tstamp",
+                                          "snowplow__cwv_events",
                                           "snowplow__derived_tstamp_partitioned"] }
 ];
 
@@ -262,12 +263,11 @@ export const printYamlVariables = (data) => {
 
 export const Template = ObjectFieldTemplateGroupsGenerator(GROUPS);
 ```
-
 ## Config Generator
-Over time the list of available package variables are expected to grow to help support various specific use cases and warehouses which might take a while to get familiar with.
+```mdx-code-block
+import ConfigGenerator from "@site/docs/reusable/data-modeling/config-generator/_index.md"
 
-To help you generate the project variables code block you should put in your `dbt_project.yml` to overwrite the package defaults, we have provided a list of input fields with explanations in the expandable text blocks below. Based on the inputs given you can see the code being generated gradually.
-
-Any values not specified will use their default values from the package, therefore it is enough to modify the variables that fit your business needs. If your selections do not generate anything it means you specified default values in which case there is no need to overwrite them on your project level.
+<ConfigGenerator/>
+```
 
 <JsonApp schema={dbtSnowplowWebConfigSchema} output={printYamlVariables} template={Template}/>

@@ -6,6 +6,7 @@ sidebar_position: 30
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ThemedImage from '@theme/ThemedImage';
 ```
 
 :::tip
@@ -26,6 +27,49 @@ How this works is that the unified, web, and mobile packages contain a `User Map
 The `domain_userid`/`device_user_id` is cookie/device based and therefore expires/changes over time, where as `user_id` is typically populated when a user logs in with your own internal identifier (dependent on your tracking implementation). If you do not currently set a `user_id` as part of your tracking for logged-in users, we recommend that you begin doing this as without some assigned ID it is not possible to stitch `domain_userid` together.
 
 This mapping is applied to the sessions table by a post-hook which updates the `stitched_user_id` column with the latest mapping. If no mapping is present, the default value for `stitched_user_id` is the `domain_userid`/`device_user_id`. This process is known as session stitching, and effectively allows you to attribute logged-in and non-logged-in sessions back to a single user.
+
+
+
+<Tabs groupId="dbt-packages" queryString>
+
+<TabItem value="unified" label="Snowplow Unified" default>
+  <p align="center">
+  <ThemedImage
+  alt='Session stitching in the unified package'
+  sources={{
+    light: require('./images/session_stitching_light_unified.drawio.png').default,
+    dark: require('./images/session_stitching_dark_unified.drawio.png').default
+  }}
+  />
+  </p>
+</TabItem>
+
+<TabItem value="web" label="Snowplow Web">
+  <p align="center">
+  <ThemedImage
+  alt='Session stitching in the web package'
+  sources={{
+    light: require('./images/session_stitching_light_web.drawio.png').default,
+    dark: require('./images/session_stitching_dark_web.drawio.png').default
+  }}
+  />
+  </p>
+</TabItem>
+
+<TabItem value="mobile" label="Snowplow Mobile">
+  <p align="center">
+  <ThemedImage
+  alt='Session stitching in the mobile package'
+  sources={{
+    light: require('./images/session_stitching_light_mobile.drawio.png').default,
+    dark: require('./images/session_stitching_dark_mobile.drawio.png').default
+  }}
+  />
+  </p>
+</TabItem>
+
+</Tabs>
+
 
 If required, this update operation can be disabled by setting in your `dbt_project.yml` file (selecting one of web/mobile, or both, as appropriate):
 

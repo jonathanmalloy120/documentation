@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 ## Package Configuration Variables
 
-This package utilizes a set of variables that are configured to recommended values for optimal performance of the models. Depending on your use case, you might want to override these values by adding to your `dbt_project.yml` file.
+This package utilizes a set of variables that are configured to recommended values for optimal performance of the models. Depending on your use case, you might want to override these values by adding to your `dbt_project.yml` file. We have provided a [tool](#config-generator) below to help you with that.
 
 :::caution
 
@@ -124,11 +124,12 @@ export const Template = ObjectFieldTemplateGroupsGenerator(GROUPS);
 ```
 
 ## Config Generator
-Over time the list of available package variables are expected to grow to help support various specific use cases and warehouses which might take a while to get familiar with.
 
-To help you generate the project variables code block you should put in your `dbt_project.yml` to overwrite the package defaults, we have provided a list of input fields with explanations in the expandable text blocks below. Based on the inputs given you can see the code being generated gradually.
+```mdx-code-block
+import ConfigGenerator from "@site/docs/reusable/data-modeling/config-generator/_index.md"
 
-Any values not specified will use their default values from the package, therefore it is enough to modify the variables that fit your business needs. If your selections do not generate anything it means you specified default values in which case there is no need to overwrite them on your project level.
+<ConfigGenerator/>
+```
 
 
 <JsonApp schema={dbtSnowplowFractributionConfigSchema} output={printYamlVariables} template={Template}/>

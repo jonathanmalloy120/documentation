@@ -4,6 +4,10 @@ sidebar_position: 100
 title: "Unified Quickstart"
 ---
 
+:::danger
+The unified package is currently in pre-release state.
+:::
+
 ## Requirements
 
 In addition to [dbt](https://github.com/dbt-labs/dbt) being installed:
@@ -48,7 +52,7 @@ If you do not do this the package will still work, but the incremental upserts w
 
 ### 2. Adding the `selectors.yml` file
 
-Within the packages we have provided a suite of suggested selectors to run and test the models within the package together with the web model. This leverages dbt's [selector flag](https://docs.getdbt.com/reference/node-selection/syntax). You can find out more about each selector in the [YAML Selectors](/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-operation/index.md#yaml-selectors) section.
+Within the packages we have provided a suite of suggested selectors to run and test the models within the package together with the unified model. This leverages dbt's [selector flag](https://docs.getdbt.com/reference/node-selection/syntax). You can find out more about each selector in the [YAML Selectors](/docs/modeling-your-data/modeling-your-data-with-dbt/dbt-operation/index.md#yaml-selectors) section.
 
 These are defined in the `selectors.yml` file ([source](https://github.com/snowplow/dbt-snowplow-web/blob/main/selectors.yml)) within the package, however in order to use these selections you will need to copy this file into your own dbt project directory. This is a top-level file and therefore should sit alongside your `dbt_project.yml` file. If you are using multiple packages in your project you will need to combine the contents of these into a single file.
 
@@ -93,15 +97,15 @@ vars:
     snowplow__enable_iab: true
     snowplow__enable_ua: true
     snowplow__enable_yauaa: true
-    snowplow__enable_browser_context: false
-    snowplow__enable_mobile_context: false
-    snowplow__enable_geolocation_context: false
-    snowplow__enable_application_context: false
-    snowplow__enable_screen_context: false
-    snowplow__enable_deep_link_context: false
-    snowplow__enable_consent: false
-    snowplow__enable_cwv: false
-    snowplow__enable_app_errors: false
+    snowplow__enable_browser_context: true
+    snowplow__enable_mobile_context: true
+    snowplow__enable_geolocation_context: true
+    snowplow__enable_application_context: true
+    snowplow__enable_screen_context: true
+    snowplow__enable_deep_link_context: true
+    snowplow__enable_consent: true
+    snowplow__enable_cwv: true
+    snowplow__enable_app_errors: true
 ```
 
 ### 5. Filter your data set

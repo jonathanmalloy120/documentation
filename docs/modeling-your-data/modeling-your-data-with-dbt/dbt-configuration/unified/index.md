@@ -113,7 +113,7 @@ Redshift and Postgres use a [shredded](/docs/pipeline-components-and-application
 | `geolocation_context` | `com_snowplowanalytics_snowplow_geolocation_context_1` |
 | `application_context` | `com_snowplowanalytics_mobile_application_1`           |
 | `screen_context`      | `com_snowplowanalytics_mobile_screen_1`                |
-| `snowplow__application_error_events`    | `com_snowplowanalytics_snowplow_application_error_1`   |
+| `application_error_events`    | `com_snowplowanalytics_snowplow_application_error_1`   |
 | `screen_view_events`  | `com_snowplowanalytics_mobile_screen_view_1`           |
 | `deep_link_context`   | `com_snowplowanalytics_mobile_deep_link_1`    |
 | `cwv_events`          |  `com_snowplowanalytics_snowplow_web_vitals_1` |
